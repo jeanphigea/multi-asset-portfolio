@@ -1,0 +1,1392 @@
+{
+ "etfs": [
+  {
+   "ticker": "VUSA",
+   "shares": 180,
+   "last_price_gbp": 109.405,
+   "last_price_date": "2026-10-30"
+  },
+  {
+   "ticker": "IWFQ",
+   "shares": 150,
+   "last_price_gbp": 67.61,
+   "last_price_date": "2026-10-30"
+  },
+  {
+   "ticker": "EMIM",
+   "shares": 260,
+   "last_price_gbp": 38.35,
+   "last_price_date": "2026-10-30"
+  },
+  {
+   "ticker": "IAPD",
+   "shares": 210,
+   "last_price_gbp": 23.68,
+   "last_price_date": "2026-10-30"
+  },
+  {
+   "ticker": "INFR",
+   "shares": 170,
+   "last_price_gbp": 29.15,
+   "last_price_date": "2026-10-30"
+  },
+  {
+   "ticker": "SGLN",
+   "shares": 86,
+   "last_price_gbp": 58.23,
+   "last_price_date": "2026-10-30"
+  },
+  {
+   "ticker": "SMGB",
+   "shares": 64,
+   "last_price_gbp": 78.17,
+   "last_price_date": "2026-10-30"
+  }
+ ],
+ "stocks": [
+  {
+   "ticker": "NVDA",
+   "name": "Nvidia",
+   "quantity": 17,
+   "last_price": 213.66,
+   "currency": "USD",
+   "cost_basis_local": null
+  },
+  {
+   "ticker": "MSFT",
+   "name": "Microsoft",
+   "quantity": 7,
+   "last_price": 530.14,
+   "currency": "USD",
+   "cost_basis_local": null
+  },
+  {
+   "ticker": "AAPL",
+   "name": "Apple",
+   "quantity": 10,
+   "last_price": 348.91,
+   "currency": "USD",
+   "cost_basis_local": null
+  },
+  {
+   "ticker": "GOOG",
+   "name": "Alphabet",
+   "quantity": 13,
+   "last_price": 282.32,
+   "currency": "USD",
+   "cost_basis_local": null
+  },
+  {
+   "ticker": "AMZN",
+   "name": "Amazon.com",
+   "quantity": 15,
+   "last_price": 243.79,
+   "currency": "USD",
+   "cost_basis_local": null
+  },
+  {
+   "ticker": "V",
+   "name": "Visa",
+   "quantity": 9,
+   "last_price": 410.54,
+   "currency": "USD",
+   "cost_basis_local": null
+  },
+  {
+   "ticker": "LLY",
+   "name": "Eli Lilly",
+   "quantity": 3,
+   "last_price": 1373.7,
+   "currency": "USD",
+   "cost_basis_local": null
+  },
+  {
+   "ticker": "AZN",
+   "name": "AstraZeneca",
+   "quantity": 21,
+   "last_price": 130.52,
+   "currency": "GBP",
+   "cost_basis_local": null
+  },
+  {
+   "ticker": "BA.",
+   "name": "BAE Systems",
+   "quantity": 130,
+   "last_price": 20.7,
+   "currency": "GBP",
+   "cost_basis_local": null
+  },
+  {
+   "ticker": "RHM",
+   "name": "Rheinmetall",
+   "quantity": 3,
+   "last_price": 1048.2,
+   "currency": "EUR",
+   "cost_basis_local": null
+  },
+  {
+   "ticker": "ADYEN",
+   "name": "Adyen",
+   "quantity": 4,
+   "last_price": 815.9,
+   "currency": "EUR",
+   "cost_basis_local": null
+  },
+  {
+   "ticker": "700",
+   "name": "Tencent",
+   "quantity": 73,
+   "last_price": 385.2,
+   "currency": "HKD",
+   "cost_basis_local": null
+  },
+  {
+   "ticker": "RACE",
+   "name": "Ferrari",
+   "quantity": 9,
+   "last_price": 399.77,
+   "currency": "USD",
+   "cost_basis_local": null
+  },
+  {
+   "ticker": "CSH2",
+   "name": "Amundi Smart Overnight Return GBP Hedged",
+   "quantity": 990,
+   "last_price": 5.033,
+   "currency": "GBP",
+   "cost_basis_local": null
+  }
+ ],
+ "fx": {
+  "USD": 0.74674,
+  "EUR": 0.83569,
+  "HKD": 0.09513,
+  "CHF": 0.9082,
+  "SEK": 0.07577,
+  "DKK": 0.1113,
+  "GBP": 1.0,
+  "GBp": 0.01
+ },
+ "holdings": {
+  "VUSA": {
+   "as_of": "2026-09-16",
+   "source": "db",
+   "rows": [
+    {
+     "name": "NVIDIA",
+     "ticker": "NVDA",
+     "weight": 7.53
+    },
+    {
+     "name": "Apple",
+     "ticker": "AAPL",
+     "weight": 6.61
+    },
+    {
+     "name": "Microsoft",
+     "ticker": "MSFT",
+     "weight": 4.31
+    },
+    {
+     "name": "Amazon.com",
+     "ticker": "AMZN",
+     "weight": 3.63
+    },
+    {
+     "name": "Alphabet A",
+     "ticker": "GOOGL",
+     "weight": 3.26
+    },
+    {
+     "name": "Broadcom",
+     "ticker": "AVGO",
+     "weight": 2.78
+    },
+    {
+     "name": "Alphabet C",
+     "ticker": "GOOG",
+     "weight": 2.59
+    },
+    {
+     "name": "Micron Technology",
+     "ticker": "MU",
+     "weight": 2.02
+    },
+    {
+     "name": "Meta Platforms",
+     "ticker": "META",
+     "weight": 1.92
+    },
+    {
+     "name": "Tesla",
+     "ticker": "TSLA",
+     "weight": 1.84
+    },
+    {
+     "name": "Eli Lilly",
+     "ticker": "LLY",
+     "weight": 1.47
+    },
+    {
+     "name": "Advanced Micro Devices",
+     "ticker": "AMD",
+     "weight": 1.47
+    },
+    {
+     "name": "Berkshire Hathaway",
+     "ticker": "BRK.B",
+     "weight": 1.43
+    },
+    {
+     "name": "JPMorgan Chase",
+     "ticker": "JPM",
+     "weight": 1.24
+    },
+    {
+     "name": "Intel",
+     "ticker": "INTC",
+     "weight": 1.03
+    },
+    {
+     "name": "Johnson & Johnson",
+     "ticker": "JNJ",
+     "weight": 0.95
+    },
+    {
+     "name": "Applied Materials",
+     "ticker": "AMAT",
+     "weight": 0.89
+    },
+    {
+     "name": "Visa",
+     "ticker": "V",
+     "weight": 0.89
+    },
+    {
+     "name": "ExxonMobil",
+     "ticker": "XOM",
+     "weight": 0.88
+    },
+    {
+     "name": "Lam Research",
+     "ticker": "LRCX",
+     "weight": 0.84
+    },
+    {
+     "name": "Walmart",
+     "ticker": "WMT",
+     "weight": 0.77
+    },
+    {
+     "name": "Caterpillar",
+     "ticker": "CAT",
+     "weight": 0.76
+    },
+    {
+     "name": "Cisco Systems",
+     "ticker": "CSCO",
+     "weight": 0.72
+    },
+    {
+     "name": "AbbVie",
+     "ticker": "ABBV",
+     "weight": 0.69
+    },
+    {
+     "name": "Costco Wholesale",
+     "ticker": "COST",
+     "weight": 0.65
+    }
+   ]
+  },
+  "IWFQ": {
+   "as_of": "2026-09-16",
+   "source": "db",
+   "rows": [
+    {
+     "name": "Apple",
+     "ticker": "AAPL",
+     "weight": 5.73
+    },
+    {
+     "name": "NVIDIA",
+     "ticker": "NVDA",
+     "weight": 5.06
+    },
+    {
+     "name": "Microsoft",
+     "ticker": "MSFT",
+     "weight": 4.92
+    },
+    {
+     "name": "Meta Platforms",
+     "ticker": "META",
+     "weight": 3.68
+    },
+    {
+     "name": "Visa",
+     "ticker": "V",
+     "weight": 3.4
+    },
+    {
+     "name": "ASML Holding",
+     "ticker": "ASML",
+     "weight": 3.27
+    },
+    {
+     "name": "Eli Lilly",
+     "ticker": "LLY",
+     "weight": 2.54
+    },
+    {
+     "name": "TJX Companies",
+     "ticker": "TJX",
+     "weight": 2.24
+    },
+    {
+     "name": "Lam Research",
+     "ticker": "LRCX",
+     "weight": 2.08
+    },
+    {
+     "name": "Mastercard",
+     "ticker": "MA",
+     "weight": 1.91
+    },
+    {
+     "name": "Applied Materials",
+     "ticker": "AMAT",
+     "weight": 1.83
+    },
+    {
+     "name": "Alphabet A",
+     "ticker": "GOOGL",
+     "weight": 1.73
+    },
+    {
+     "name": "Alphabet C",
+     "ticker": "GOOG",
+     "weight": 1.38
+    },
+    {
+     "name": "Caterpillar",
+     "ticker": "CAT",
+     "weight": 1.29
+    },
+    {
+     "name": "KLA Corp",
+     "ticker": "KLAC",
+     "weight": 1.25
+    },
+    {
+     "name": "Johnson & Johnson",
+     "ticker": "JNJ",
+     "weight": 1.22
+    },
+    {
+     "name": "Netflix",
+     "ticker": "NFLX",
+     "weight": 0.99
+    },
+    {
+     "name": "Iberdrola",
+     "ticker": "IBE",
+     "weight": 0.89
+    },
+    {
+     "name": "Costco Wholesale",
+     "ticker": "COST",
+     "weight": 0.88
+    },
+    {
+     "name": "TotalEnergies",
+     "ticker": "TTE",
+     "weight": 0.86
+    },
+    {
+     "name": "Texas Instruments",
+     "ticker": "TXN",
+     "weight": 0.82
+    },
+    {
+     "name": "Roche Holding",
+     "ticker": "ROG",
+     "weight": 0.81
+    },
+    {
+     "name": "Merck & Co",
+     "ticker": "MRK",
+     "weight": 0.8
+    },
+    {
+     "name": "Walmart",
+     "ticker": "WMT",
+     "weight": 0.79
+    },
+    {
+     "name": "Coca-Cola",
+     "ticker": "KO",
+     "weight": 0.75
+    }
+   ]
+  },
+  "EMIM": {
+   "as_of": "2026-09-16",
+   "source": "db",
+   "rows": [
+    {
+     "name": "Taiwan Semiconductor Manufacturing",
+     "ticker": "2330",
+     "weight": 12.86
+    },
+    {
+     "name": "Samsung Electronics",
+     "ticker": "005930",
+     "weight": 7.4
+    },
+    {
+     "name": "SK Hynix",
+     "ticker": "000660",
+     "weight": 6.83
+    },
+    {
+     "name": "Tencent Holdings",
+     "ticker": "700",
+     "weight": 2.36
+    },
+    {
+     "name": "Alibaba Group",
+     "ticker": "BABA",
+     "weight": 1.54
+    },
+    {
+     "name": "MediaTek",
+     "ticker": "2454",
+     "weight": 1.38
+    },
+    {
+     "name": "Delta Electronics",
+     "ticker": "2308",
+     "weight": 0.92
+    },
+    {
+     "name": "Samsung Electronics (Pref)",
+     "ticker": "005935",
+     "weight": 0.8
+    },
+    {
+     "name": "SK Square",
+     "ticker": "402340",
+     "weight": 0.73
+    },
+    {
+     "name": "Hon Hai Precision (Foxconn)",
+     "ticker": "2317",
+     "weight": 0.71
+    },
+    {
+     "name": "China Construction Bank",
+     "ticker": "0939",
+     "weight": 0.65
+    },
+    {
+     "name": "HDFC Bank",
+     "ticker": "HDFCBANK",
+     "weight": 0.62
+    },
+    {
+     "name": "Samsung Electro-Mechanics",
+     "ticker": "009150",
+     "weight": 0.57
+    },
+    {
+     "name": "Reliance Industries",
+     "ticker": "RELIANCE",
+     "weight": 0.56
+    },
+    {
+     "name": "ICICI Bank",
+     "ticker": "ICICIBANK",
+     "weight": 0.52
+    },
+    {
+     "name": "ASE Technology Holding",
+     "ticker": "3711",
+     "weight": 0.45
+    },
+    {
+     "name": "iShares MSCI Brazil UCITS ETF DE",
+     "ticker": "4BRZ",
+     "weight": 0.41
+    },
+    {
+     "name": "Industrial and Commercial Bank of China",
+     "ticker": "1398",
+     "weight": 0.39
+    },
+    {
+     "name": "Bharti Airtel",
+     "ticker": "BHARTIARTL",
+     "weight": 0.38
+    },
+    {
+     "name": "Yageo Corporation",
+     "ticker": "2327",
+     "weight": 0.38
+    },
+    {
+     "name": "Xiaomi Corporation",
+     "ticker": "1810",
+     "weight": 0.37
+    },
+    {
+     "name": "Hyundai Motor",
+     "ticker": "005380",
+     "weight": 0.36
+    },
+    {
+     "name": "Elite Material",
+     "ticker": "2383",
+     "weight": 0.35
+    },
+    {
+     "name": "United Microelectronics",
+     "ticker": "2303",
+     "weight": 0.35
+    },
+    {
+     "name": "Vale",
+     "ticker": "VALE3",
+     "weight": 0.33
+    }
+   ]
+  },
+  "IAPD": {
+   "as_of": "2026-09-16",
+   "source": "db",
+   "rows": [
+    {
+     "name": "BHP Group",
+     "ticker": "BHP",
+     "weight": 9.44
+    },
+    {
+     "name": "DBS Group Holdings",
+     "ticker": "D05",
+     "weight": 5.35
+    },
+    {
+     "name": "Honda Motor",
+     "ticker": "7267",
+     "weight": 4.76
+    },
+    {
+     "name": "Oversea-Chinese Banking Corp",
+     "ticker": "O39",
+     "weight": 4.66
+    },
+    {
+     "name": "Fortescue",
+     "ticker": "FMG",
+     "weight": 4.38
+    },
+    {
+     "name": "Santos",
+     "ticker": "STO",
+     "weight": 3.93
+    },
+    {
+     "name": "ANZ Group Holdings",
+     "ticker": "ANZ",
+     "weight": 3.84
+    },
+    {
+     "name": "Westpac Banking",
+     "ticker": "WBC",
+     "weight": 3.14
+    },
+    {
+     "name": "United Overseas Bank",
+     "ticker": "U11",
+     "weight": 3.11
+    },
+    {
+     "name": "BOC Hong Kong Holdings",
+     "ticker": "2388",
+     "weight": 2.94
+    },
+    {
+     "name": "Power Assets Holdings",
+     "ticker": "0006",
+     "weight": 2.66
+    },
+    {
+     "name": "QBE Insurance Group",
+     "ticker": "QBE",
+     "weight": 2.57
+    },
+    {
+     "name": "Spark New Zealand",
+     "ticker": "SPK",
+     "weight": 2.28
+    },
+    {
+     "name": "CK Asset Holdings",
+     "ticker": "1113",
+     "weight": 2.26
+    },
+    {
+     "name": "Sonic Healthcare",
+     "ticker": "SHL",
+     "weight": 2.15
+    },
+    {
+     "name": "Wilmar International",
+     "ticker": "F34",
+     "weight": 2.11
+    },
+    {
+     "name": "Henderson Land Development",
+     "ticker": "0012",
+     "weight": 2.04
+    },
+    {
+     "name": "PCCW",
+     "ticker": "0008",
+     "weight": 1.97
+    },
+    {
+     "name": "Insurance Australia Group",
+     "ticker": "IAG",
+     "weight": 1.86
+    },
+    {
+     "name": "Sino Land",
+     "ticker": "0083",
+     "weight": 1.84
+    },
+    {
+     "name": "Swire Pacific",
+     "ticker": "0019",
+     "weight": 1.83
+    },
+    {
+     "name": "CK Infrastructure Holdings",
+     "ticker": "1038",
+     "weight": 1.63
+    },
+    {
+     "name": "Persol Holdings",
+     "ticker": "2181",
+     "weight": 1.62
+    },
+    {
+     "name": "Venture Corp",
+     "ticker": "V03",
+     "weight": 1.6
+    },
+    {
+     "name": "EBOS Group",
+     "ticker": "EBO",
+     "weight": 1.55
+    }
+   ]
+  },
+  "INFR": {
+   "as_of": "2026-09-16",
+   "source": "db",
+   "rows": [
+    {
+     "name": "NextEra Energy",
+     "ticker": "NEE",
+     "weight": 5.36
+    },
+    {
+     "name": "Union Pacific",
+     "ticker": "UNP",
+     "weight": 5.32
+    },
+    {
+     "name": "Enbridge",
+     "ticker": "ENB",
+     "weight": 3.42
+    },
+    {
+     "name": "Southern Co",
+     "ticker": "SO",
+     "weight": 3.18
+    },
+    {
+     "name": "Duke Energy",
+     "ticker": "DUK",
+     "weight": 2.93
+    },
+    {
+     "name": "CSX Corp",
+     "ticker": "CSX",
+     "weight": 2.85
+    },
+    {
+     "name": "Williams Companies",
+     "ticker": "WMB",
+     "weight": 2.66
+    },
+    {
+     "name": "Canadian Pacific Kansas City",
+     "ticker": "CP",
+     "weight": 2.44
+    },
+    {
+     "name": "National Grid",
+     "ticker": "NG.",
+     "weight": 2.43
+    },
+    {
+     "name": "American Tower",
+     "ticker": "AMT",
+     "weight": 2.42
+    },
+    {
+     "name": "Norfolk Southern",
+     "ticker": "NSC",
+     "weight": 2.33
+    },
+    {
+     "name": "Canadian National Railway",
+     "ticker": "CNR",
+     "weight": 2.09
+    },
+    {
+     "name": "American Electric Power",
+     "ticker": "AEP",
+     "weight": 2.07
+    },
+    {
+     "name": "TC Energy",
+     "ticker": "TRP",
+     "weight": 2.02
+    },
+    {
+     "name": "Kinder Morgan",
+     "ticker": "KMI",
+     "weight": 1.85
+    },
+    {
+     "name": "Dominion Energy",
+     "ticker": "D",
+     "weight": 1.78
+    },
+    {
+     "name": "Targa Resources",
+     "ticker": "TRGP",
+     "weight": 1.73
+    },
+    {
+     "name": "Cheniere Energy",
+     "ticker": "LNG",
+     "weight": 1.68
+    },
+    {
+     "name": "ONEOK",
+     "ticker": "OKE",
+     "weight": 1.68
+    },
+    {
+     "name": "Sempra",
+     "ticker": "SRE",
+     "weight": 1.68
+    },
+    {
+     "name": "Entergy",
+     "ticker": "ETR",
+     "weight": 1.48
+    },
+    {
+     "name": "Xcel Energy",
+     "ticker": "XEL",
+     "weight": 1.46
+    },
+    {
+     "name": "Exelon",
+     "ticker": "EXC",
+     "weight": 1.41
+    },
+    {
+     "name": "Consolidated Edison",
+     "ticker": "ED",
+     "weight": 1.22
+    },
+    {
+     "name": "Public Service Enterprise Group",
+     "ticker": "PEG",
+     "weight": 1.14
+    }
+   ]
+  },
+  "SGLN": {
+   "as_of": "2026-09-16",
+   "source": "db",
+   "rows": [
+    {
+     "name": "Gold (Physical)",
+     "ticker": "GOLD",
+     "weight": 100.0
+    }
+   ]
+  },
+  "SMGB": {
+   "as_of": "31/07/2026",
+   "source": "db",
+   "rows": [
+    {
+     "name": "AMD",
+     "ticker": "",
+     "weight": 11.07
+    },
+    {
+     "name": "Broadcom Inc.",
+     "ticker": "",
+     "weight": 11.0
+    },
+    {
+     "name": "NVIDIA Corp.",
+     "ticker": "",
+     "weight": 10.53
+    },
+    {
+     "name": "Taiwan Semiconductor Manufacturing Co., Ltd.",
+     "ticker": "",
+     "weight": 10.4
+    },
+    {
+     "name": "ASML Holding NV",
+     "ticker": "",
+     "weight": 9.82
+    },
+    {
+     "name": "Micron Technology",
+     "ticker": "",
+     "weight": 9.7
+    },
+    {
+     "name": "Intel Corp.",
+     "ticker": "",
+     "weight": 6.24
+    },
+    {
+     "name": "Applied Materials, Inc.",
+     "ticker": "",
+     "weight": 5.76
+    },
+    {
+     "name": "Lam Research",
+     "ticker": "",
+     "weight": 5.11
+    },
+    {
+     "name": "Texas Instruments",
+     "ticker": "",
+     "weight": 3.59
+    }
+   ]
+  }
+ },
+ "ai_maturity": {
+  "alphabet": {
+   "score5": 3.91,
+   "dims": null,
+   "provenance": "published",
+   "source": "Tual 2026, Nasdaq panel rank 1",
+   "as_of": "2026-07"
+  },
+  "amazon": {
+   "score5": 3.64,
+   "dims": null,
+   "provenance": "published",
+   "source": "Tual 2026, Nasdaq panel rank 3",
+   "as_of": "2026-07"
+  },
+  "microsoft": {
+   "score5": 3.54,
+   "dims": null,
+   "provenance": "published",
+   "source": "Tual 2026, Nasdaq panel rank 4",
+   "as_of": "2026-07"
+  },
+  "eli lilly": {
+   "score5": 2.98,
+   "dims": [
+    3.5,
+    3.5,
+    2,
+    3.5,
+    2,
+    3,
+    3.5,
+    2.5
+   ],
+   "provenance": "estimated",
+   "source": "Chief AI Officer (T. Fuchs, Oct 2024) + 1,000-GPU cluster + 10-K AI risk factors; no public data-governance or training disclosure",
+   "as_of": "2026-08"
+  },
+  "apple": {
+   "score5": 2.78,
+   "dims": null,
+   "provenance": "published",
+   "source": "Tual 2026, Nasdaq panel rank 7",
+   "as_of": "2026-07"
+  },
+  "netflix": {
+   "score5": 2.88,
+   "dims": null,
+   "provenance": "published",
+   "source": "Tual 2026, Nasdaq panel rank 5",
+   "as_of": "2026-07"
+  },
+  "nvidia": {
+   "score5": 2.73,
+   "dims": null,
+   "provenance": "published",
+   "source": "Tual 2026, Nasdaq panel rank 9",
+   "as_of": "2026-07"
+  },
+  "asml": {
+   "score5": 2.86,
+   "dims": null,
+   "provenance": "published",
+   "source": "Tual 2026, Nasdaq panel rank 6",
+   "as_of": "2026-07"
+  },
+  "astrazeneca": {
+   "score5": 3.66,
+   "dims": [
+    4,
+    4,
+    3.5,
+    3.5,
+    4.5,
+    3.5,
+    3,
+    3
+   ],
+   "provenance": "estimated",
+   "source": "CAIO + federated AI councils; 17,000 employees AI-certified (mandatory Bronze/Silver/Gold); BIKG knowledge graph, 2M-genome programme",
+   "as_of": "2026-08"
+  },
+  "alibaba": {
+   "score5": 3.07,
+   "dims": [
+    4,
+    2.5,
+    2,
+    4,
+    2,
+    4,
+    2.5,
+    3.5
+   ],
+   "provenance": "estimated",
+   "source": "AI = 30% of external cloud revenue; Qwen3.7-Max + Qwen3Guard safety model. Marked down on D2/D7: senior Qwen departures and securities class action over AI disclosures",
+   "as_of": "2026-08"
+  },
+  "samsung electronics": {
+   "score5": 2.79,
+   "dims": [
+    3,
+    3.5,
+    2,
+    3.5,
+    2,
+    3,
+    2.5,
+    2.5
+   ],
+   "provenance": "estimated",
+   "source": "AI Governance Council established; independent directors with AI expertise; AI agents validated for production fab equipment",
+   "as_of": "2026-08"
+  },
+  "sk hynix": {
+   "score5": 2.78,
+   "dims": [
+    3.5,
+    2.5,
+    2,
+    3.5,
+    3.5,
+    3,
+    2,
+    2
+   ],
+   "provenance": "estimated",
+   "source": "AI adoption tied to staff KPIs; phased AI-agent rollout in Cheongju back-end lines, still under evaluation",
+   "as_of": "2026-08"
+  },
+  "taiwan semicon mfg": {
+   "score5": 2.64,
+   "dims": [
+    3,
+    2.5,
+    2,
+    3,
+    2,
+    3,
+    3,
+    2.5
+   ],
+   "provenance": "estimated",
+   "source": "ESG Steering Committee and board Sustainability Committee, but no AI-specific governance body found; AI demand discussed as market, not internal maturity",
+   "as_of": "2026-08"
+  },
+  "bae systems": {
+   "score5": 2.6,
+   "dims": [
+    3,
+    3,
+    2,
+    2.5,
+    2.5,
+    2.5,
+    3,
+    2
+   ],
+   "provenance": "estimated",
+   "source": "'AI with Purpose' trust/ethics framework; sector-wide only 12% at advanced digital maturity",
+   "as_of": "2026-08"
+  },
+  "amd": {
+   "score5": 2.49,
+   "dims": [
+    3,
+    2,
+    2,
+    3,
+    2,
+    2.5,
+    2.5,
+    3
+   ],
+   "provenance": "estimated",
+   "source": "AI central to product strategy; 10-K AI risk disclosure at sector norm; no internal AI governance body found",
+   "as_of": "2026-08"
+  },
+  "rheinmetall": {
+   "score5": 2.39,
+   "dims": [
+    3,
+    2,
+    2,
+    3,
+    2,
+    3,
+    2,
+    2
+   ],
+   "provenance": "estimated",
+   "source": "AI in products (autonomous ground systems, sensor fusion, predictive maintenance); no AI governance body found",
+   "as_of": "2026-08"
+  },
+  "micron technology": {
+   "score5": 2.38,
+   "dims": [
+    3,
+    2,
+    2,
+    2.5,
+    2,
+    2.5,
+    2.5,
+    2.5
+   ],
+   "provenance": "estimated",
+   "source": "HBM/AI demand central to strategy; no public internal AI governance or training disclosure found",
+   "as_of": "2026-08"
+  },
+  "ferrari": {
+   "score5": 2.2,
+   "dims": [
+    2.5,
+    2,
+    2,
+    2.5,
+    2,
+    2.5,
+    2,
+    2
+   ],
+   "provenance": "estimated",
+   "source": "2026 ESG action plan covers governance broadly; no AI-specific strategy or governance found",
+   "as_of": "2026-08"
+  },
+  "broadcom": {
+   "score5": 2.71,
+   "dims": null,
+   "provenance": "published",
+   "source": "Tual 2026, Nasdaq panel rank 10",
+   "as_of": "2026-07"
+  },
+  "mastercard": {
+   "score5": 3.69,
+   "dims": [
+    4,
+    4.5,
+    4,
+    3.5,
+    2.5,
+    4,
+    4,
+    2.5
+   ],
+   "provenance": "estimated",
+   "source": "Chief AI & Data Officer + AI Governance Council (CDO/CPO/EVP AI); board oversight of AI; Chief Privacy/AI Officer briefs Risk Committee; generative-AI guidelines",
+   "as_of": "2026-08"
+  },
+  "tencent": {
+   "score5": 2.9,
+   "dims": [
+    4,
+    2.5,
+    2,
+    4,
+    2,
+    3.5,
+    2,
+    3
+   ],
+   "provenance": "estimated",
+   "source": "RMB 36bn AI spend in 2026, doubled YoY; Hunyuan foundation models on re-architected infra. D2 marked down: AI Lab dismantled and folded into Hunyuan team Mar 2026",
+   "as_of": "2026-08"
+  },
+  "lam research": {
+   "score5": 2.56,
+   "dims": [
+    3,
+    2,
+    2,
+    3.5,
+    2,
+    3,
+    2.5,
+    2.5
+   ],
+   "provenance": "estimated",
+   "source": "Equipment intelligence and automation cited as differentiator; doubled automatable preventive-maintenance tasks during 2026",
+   "as_of": "2026-08"
+  },
+  "adyen": {
+   "score5": 2.51,
+   "dims": [
+    3,
+    2,
+    2.5,
+    3,
+    2,
+    3,
+    2.5,
+    2
+   ],
+   "provenance": "estimated",
+   "source": "Agentic-commerce platform extension; fraud/risk models core to payments. No AI governance disclosure found",
+   "as_of": "2026-08"
+  },
+  "intel": {
+   "score5": 2.44,
+   "dims": [
+    3,
+    2,
+    2,
+    3,
+    2,
+    2.5,
+    2.5,
+    2.5
+   ],
+   "provenance": "estimated",
+   "source": "AI central to product turnaround; 10-K AI risk disclosure at sector norm; no internal AI governance body found",
+   "as_of": "2026-08"
+  },
+  "applied materials": {
+   "score5": 2.44,
+   "dims": [
+    3,
+    2,
+    2,
+    3,
+    2,
+    2.5,
+    2.5,
+    2.5
+   ],
+   "provenance": "estimated",
+   "source": "AI cited as driving >80% of 2026 WFE spending growth — market demand rather than internal maturity",
+   "as_of": "2026-08"
+  },
+  "texas instruments": {
+   "score5": 2.26,
+   "dims": [
+    2.5,
+    2,
+    2,
+    2.5,
+    2,
+    2.5,
+    2.5,
+    2
+   ],
+   "provenance": "estimated",
+   "source": "No public internal AI strategy, governance body or training programme found",
+   "as_of": "2026-08"
+  },
+  "meta platforms": {
+   "score5": 3.79,
+   "dims": null,
+   "provenance": "published",
+   "source": "Tual 2026, Nasdaq panel rank 2",
+   "as_of": "2026-07"
+  },
+  "tesla": {
+   "score5": 2.76,
+   "dims": null,
+   "provenance": "published",
+   "source": "Tual 2026, Nasdaq panel rank 8",
+   "as_of": "2026-07"
+  },
+  "berkshire hathaway": {
+   "score5": 2.44,
+   "dims": [
+    2.5,
+    2.5,
+    2,
+    2.5,
+    2,
+    3,
+    2.5,
+    2.5
+   ],
+   "provenance": "estimated",
+   "source": "Deliberately 'narrow AI' only where it adds value (Abel, 2026 AGM); three stated governance principles; deployed at BNSF operations and insurance fraud/deepfake detection",
+   "as_of": "2026-08"
+  },
+  "union pacific": {
+   "score5": 2.2,
+   "dims": [
+    2.5,
+    2,
+    2,
+    2.5,
+    2,
+    2.5,
+    2,
+    2
+   ],
+   "provenance": "estimated",
+   "source": "Operational technology focus; no AI-specific governance body or quantified AI programme found in public filings",
+   "as_of": "2026-08"
+  },
+  "visa": {
+   "score5": 3.27,
+   "dims": [
+    3.5,
+    3,
+    3.5,
+    3.5,
+    2.5,
+    4,
+    3.5,
+    2.5
+   ],
+   "provenance": "estimated",
+   "source": "AI in payments since 1993; Visa Scam Disruption unit has identified US$2.6bn of scam networks (US$1.6bn since Oct 2025); FY2025 10-K discloses AI/ML risk at each stage of use, overseen by the Audit & Risk Committee. No dedicated Chief AI Officer or AI-specific committee found — AI risk sits inside general technology/cyber governance",
+   "as_of": "2026-08"
+  },
+  "coca cola": {
+   "score5": 2.65,
+   "dims": [
+    3.5,
+    2.5,
+    2,
+    3,
+    2,
+    3,
+    2.5,
+    2.5
+   ],
+   "provenance": "estimated",
+   "source": "US$1.1bn five-year Microsoft partnership (Apr 2024: Azure + Azure OpenAI for marketing, bottling and operations); generative AI in production marketing (Create Real Magic 2023, AI-generated holiday ads 2024-25); Global Head of Generative AI role but no Chief AI Officer or board-level AI committee found; 10-K lists AI among technology risks; no public data-governance or workforce AI-training programme found",
+   "as_of": "2026-10"
+  }
+ },
+ "compute_asset": {
+  "amazon": {
+   "cap": 40.0,
+   "pwr": 25.0,
+   "pipe": 18.0,
+   "price": 15.0,
+   "mult": 1.0,
+   "source": "AWS segment + announced PPAs",
+   "as_of": "2026-08"
+  },
+  "microsoft": {
+   "cap": 40.0,
+   "pwr": 25.0,
+   "pipe": 18.0,
+   "price": 14.0,
+   "mult": 1.0,
+   "source": "Azure segment + capex guidance",
+   "as_of": "2026-08"
+  },
+  "alphabet": {
+   "cap": 36.0,
+   "pwr": 22.0,
+   "pipe": 18.0,
+   "price": 12.0,
+   "mult": 0.85,
+   "source": "GCP segment; large captive load",
+   "as_of": "2026-08"
+  },
+  "alibaba": {
+   "cap": 22.0,
+   "pwr": 12.0,
+   "pipe": 12.0,
+   "price": 10.0,
+   "mult": 0.85,
+   "source": "Alibaba Cloud segment",
+   "as_of": "2026-08"
+  },
+  "tencent": {
+   "cap": 20.0,
+   "pwr": 12.0,
+   "pipe": 10.0,
+   "price": 10.0,
+   "mult": 0.85,
+   "source": "Tencent Cloud segment",
+   "as_of": "2026-08"
+  },
+  "nvidia": {
+   "cap": 8.0,
+   "pwr": 3.0,
+   "pipe": 5.0,
+   "price": 12.0,
+   "mult": 0.5,
+   "source": "DGX Cloud only; mostly hardware",
+   "as_of": "2026-08"
+  },
+  "apple": {
+   "cap": 14.0,
+   "pwr": 8.0,
+   "pipe": 5.0,
+   "price": 6.0,
+   "mult": 0.25,
+   "source": "Captive iCloud/Siri estate",
+   "as_of": "2026-08"
+  },
+  "meta platforms": {
+   "cap": 34.0,
+   "pwr": 22.0,
+   "pipe": 20.0,
+   "price": 10.0,
+   "mult": 0.25,
+   "source": ">10GW target, captive use only",
+   "as_of": "2026-08"
+  }
+ }
+}

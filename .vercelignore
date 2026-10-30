@@ -1,0 +1,10 @@
+.data/
+backups/
+exports/
+cache/
+tests/
+spec/
+docs/
+scripts/
+*.db
+.ibkr*.json

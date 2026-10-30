@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Multi-Asset Portfolio</title>
+<meta name="description" content="Look-through exposure, sector and country allocation, and risk for a portfolio of ETFs and stocks.">
+<script>
+  // Apply the saved theme before first paint so there is no light flash.
+  try { const t = localStorage.getItem('theme'); if(t) document.documentElement.dataset.theme = t; } catch(e){}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js"
+        integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi"
+        crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/static/app.css?v={{ v }}">
+</head>
+<body{% if demo %} class="demo"{% endif %}>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></symbol>
+  <symbol id="i-edit" viewBox="0 0 24 24"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></symbol>
+  <symbol id="i-case" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></symbol>
+  <symbol id="i-trend" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M9 22v-4h6v4M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01"/></symbol>
+  <symbol id="i-pie" viewBox="0 0 24 24"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20M2 12h20"/></symbol>
+</svg>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand-row">
+      <div class="brand">
+        <div class="brand-mark"><svg class="icon"><use href="#i-trend"/></svg></div>
+        <div>
+          <h1>Multi-Asset Portfolio</h1>
+          <div class="tagline" id="last-loaded">Loading…</div>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn ghost edit-only" onclick="openEdit()" title="Edit ETF positions"><svg class="icon"><use href="#i-edit"/></svg><span class="lbl">ETFs</span></button>
+        <button class="btn ghost edit-only" onclick="openEditStocks()" title="Edit direct stock holdings, FX and IBKR sync"><svg class="icon"><use href="#i-case"/></svg><span class="lbl">Direct holdings</span></button>
+        <button class="btn primary edit-only" id="price-refresh-btn" onclick="refreshMarketData()" title="Re-mark prices and FX, then re-fetch fundamentals and quality scores from Yahoo Finance (about a minute)"><svg class="icon"><use href="#i-refresh"/></svg><span class="lbl">Refresh market data</span></button>
+        <button class="btn icon-only ghost theme-toggle" onclick="toggleTheme()" title="Toggle light / dark" aria-label="Toggle theme">
+          <svg class="icon moon"><use href="#i-moon"/></svg><svg class="icon sun"><use href="#i-sun"/></svg></button>
+      </div>
+    </div>
+
+    <div class="kpis" id="kpis">
+      <div class="kpi hero"><div class="k-label">Total portfolio</div><div class="k-value" id="kpi-total">—</div><div class="k-sub" id="kpi-prices">&nbsp;</div></div>
+      <div class="kpi"><div class="k-label">ETFs</div><div class="k-value" id="kpi-etf">—</div><div class="k-sub" id="kpi-etf-sub">&nbsp;</div></div>
+      <div class="kpi"><div class="k-label">Direct stocks</div><div class="k-value" id="kpi-direct">—</div><div class="k-sub" id="kpi-direct-sub">&nbsp;</div></div>
+      <div class="kpi"><div class="k-label">Look-through</div><div class="k-value" id="kpi-coverage">—</div><div class="k-sub" id="kpi-coverage-sub">&nbsp;</div></div>
+      <div class="kpi"><div class="k-label">Largest exposure</div><div class="k-value" id="kpi-top">—</div><div class="k-sub" id="kpi-top-sub">&nbsp;</div></div>
+    </div>
+
+    <nav class="nav" role="tablist">
+      <button class="nav-tab active" id="tab-portfolio" onclick="switchTab('portfolio')"><svg class="icon"><use href="#i-grid"/></svg>Portfolio <span class="kbd">1</span></button>
+      <button class="nav-tab" id="tab-exposure" onclick="switchTab('exposure')"><svg class="icon"><use href="#i-building"/></svg>Company exposure <span class="kbd">2</span></button>
+      <button class="nav-tab" id="tab-charts" onclick="switchTab('charts')"><svg class="icon"><use href="#i-pie"/></svg>Sectors <span class="kbd">3</span></button>
+      <button class="nav-tab" id="tab-countries" onclick="switchTab('countries')"><svg class="icon"><use href="#i-globe"/></svg>Countries <span class="kbd">4</span></button>
+      <button class="nav-tab" id="tab-risk" onclick="switchTab('risk')"><svg class="icon"><use href="#i-shield"/></svg>Risk <span class="kbd">5</span></button>
+    </nav>
+  </div>
+  <div class="progress"></div>
+</header>
+{% if demo %}<div class="demo-bar">Demo portfolio, read-only. Market data refreshes once a day.{% if repo_url %} <a href="{{ repo_url }}">Run your own copy</a>{% endif %}</div>{% endif %}
+<div id="stale-bar"></div>
+<div id="status-bar" role="status" aria-live="polite"></div>
+
+<main>
+  <div id="grid"></div>
+  <div id="overlap-section" class="panel" style="display:none">
+    <div class="panel-head">
+      <h3>Holdings across funds</h3>
+      <span class="panel-sub">Every position across your ETFs and direct holdings, by value. Bold rows are held in two or more places.</span>
+    </div>
+    <div id="overlap-body"></div>
+  </div>
+
+  <div id="exposure-section" style="display:none">
+    <div class="section-head">
+      <div>
+        <h2>Company exposure</h2>
+        <div class="lede">Direct holdings plus ETF look-through, merged per company. Hover a column heading for its definition.</div>
+      </div>
+      <div class="spacer"></div>
+      <span id="fund-updated" class="muted" style="font-size:12px"></span>
+    </div>
+    <div class="toolbar">
+      <label class="search"><svg class="icon"><use href="#i-search"/></svg>
+        <input id="exp-search" type="search" placeholder="Filter company, ticker, sector, country…  ( / )" oninput="renderExposure()"></label>
+      <div class="segmented" id="exp-filter">
+        <button class="active" data-f="all">All</button>
+        <button data-f="both">Direct + ETF</button>
+        <button data-f="direct">Direct</button>
+        <button data-f="etf">ETF only</button>
+      </div>
+      <span id="exp-count" class="muted" style="font-size:12px"></span>
+      <div class="spacer" style="flex:1"></div>
+      <div class="legend" title="All /20 scores and fundamentals share one colour scale — ≥16 / ≥12 / ≥8 / below">
+        <span class="sw" style="background:var(--s0)">very good</span>
+        <span class="sw" style="background:var(--s1)">good</span>
+        <span class="sw" style="background:var(--s2)">not great</span>
+        <span class="sw" style="background:var(--s3)">bad</span>
+        <span style="margin-left:6px">Dark values live from Yahoo; grey are static estimates.</span>
+      </div>
+    </div>
+    <div class="table-scroll" id="exposure-body"></div>
+  </div>
+
+  <div id="charts-section" style="display:none">
+    <div class="section-head">
+      <div>
+        <h2>Sector allocation</h2>
+        <div class="lede">Every holding, direct and through your ETFs, mapped onto the 11 GICS sectors so it can be compared with a benchmark.</div>
+      </div>
+      <div class="spacer"></div>
+      <label class="field">Benchmark <select class="bench-select" onchange="setBenchmark(this.value)"></select></label>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h3 id="sector-vs">Portfolio vs benchmark</h3><span id="sector-scope" class="panel-sub"></span></div>
+      <div class="viz-grid">
+        <div class="viz-pie"><canvas id="chart-sector-portfolio"></canvas></div>
+        <div class="viz-pie"><canvas id="chart-sector-msci"></canvas></div>
+      </div>
+      <div id="sector-diff"></div>
+      <p class="note" style="margin-top:12px">
+        Commodities and cash get their own slices. The benchmarks are all-equity and hold neither, so the
+        benchmark weight there is 0% and the whole slice counts as overweight. Percentages are shares of the
+        exposure that could be looked through. ETF providers publish only part of their holdings, so that is
+        less than the portfolio total.
+      </p>
+    </div>
+  </div>
+
+  <div id="countries-section" style="display:none">
+    <div class="section-head">
+      <div>
+        <h2>Country exposure</h2>
+        <div class="lede">Where the businesses you own are based, direct and through your ETFs, against a benchmark.</div>
+      </div>
+      <div class="spacer"></div>
+      <label class="field">Benchmark <select class="bench-select" onchange="setBenchmark(this.value)"></select></label>
+      <label class="switch" title="ETF providers publish only their largest holdings. On: each ETF's unseen remainder is assumed to be spread like its visible holdings. Exact for single-country funds, an approximation for broad ones.">
+        <input type="checkbox" id="ctry-scale" onchange="onCountryScale(this.checked)"> Scale each ETF to 100%
+      </label>
+    </div>
+    <div class="kpi-row" id="ctry-kpis"></div>
+    <div class="grid-2">
+      <div class="panel">
+        <div class="panel-head"><h3 id="ctry-bar-title">Largest countries vs benchmark</h3><span class="panel-sub" id="ctry-bar-sub"></span></div>
+        <div class="chart-box tall"><canvas id="chart-country-bar"></canvas></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>By region</h3><span class="panel-sub">Equity exposure only</span></div>
+        <div class="chart-box"><canvas id="chart-region"></canvas></div>
+        <div id="region-table"></div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h3>All countries</h3><span class="panel-sub">Click a row to see the companies behind it</span></div>
+      <div id="country-table"></div>
+    </div>
+    <p class="note" id="ctry-note"></p>
+  </div>
+
+  <div id="risk-section" style="display:none">
+    <div class="section-head">
+      <div>
+        <h2>Risk</h2>
+        <div class="lede">How today's portfolio has behaved, and how it could behave in a crash, against a benchmark you choose. Everything is in GBP.</div>
+      </div>
+      <div class="spacer"></div>
+      <label class="field">Benchmark <select id="risk-bench" class="bench-select" onchange="setBenchmark(this.value)"></select></label>
+      <div class="segmented" id="risk-years" title="Look-back window for the historical metrics">
+        <button data-y="1">1Y</button><button data-y="3">3Y</button><button data-y="5">5Y</button><button data-y="10">10Y</button>
+      </div>
+      <button class="btn sm edit-only" id="risk-refresh" onclick="loadRisk(true)" title="Re-download price history from Yahoo (it is otherwise cached for a day)">
+        <svg class="icon"><use href="#i-refresh"/></svg>Refresh history</button>
+    </div>
+    <div class="kpi-row" id="risk-kpis"></div>
+    <div class="grid-2">
+      <div class="panel">
+        <div class="panel-head"><h3>Growth of £100</h3><span class="panel-sub" id="risk-growth-sub"></span></div>
+        <div class="chart-box"><canvas id="chart-risk-growth"></canvas></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>Drawdown</h3><span class="panel-sub">Fall from the previous high</span></div>
+        <div class="chart-box"><canvas id="chart-risk-dd"></canvas></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <h3>Stress scenarios</h3>
+        <div class="segmented" id="scen-mode">
+          <button class="active" data-m="forward">Plausible today</button>
+          <button data-m="history">Historical replays</button>
+        </div>
+        <span class="panel-sub" id="scen-sub"></span>
+      </div>
+      <div class="chart-box" style="height:300px"><canvas id="chart-scen"></canvas></div>
+      <div class="scen-layout">
+        <div class="scen-list" id="scen-list"></div>
+        <div class="scen-detail" id="scen-detail"></div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="panel">
+        <div class="panel-head"><h3>Risk metrics</h3><span class="panel-sub" id="risk-metrics-sub"></span></div>
+        <div id="risk-metrics"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>Where the risk comes from</h3><span class="panel-sub">Share of portfolio volatility, by position</span></div>
+        <div id="risk-contrib"></div>
+      </div>
+    </div>
+    <p class="note" id="risk-note"></p>
+  </div>
+</main>
+
+<!-- Edit Portfolio Modal -->
+<div class="overlay" id="edit-overlay">
+  <div class="modal" role="dialog" aria-labelledby="edit-title">
+    <h2 id="edit-title">ETF positions</h2>
+    <div class="modal-sub">Ticker and number of shares. Enter a new ETF's holdings on its card; prices come from Yahoo (ticker + ".L") on the next market-data refresh.</div>
+    <div id="edit-rows"></div>
+    <button class="add-row-btn" onclick="addEditRow()">+ Add ETF</button>
+    <div class="modal-footer">
+      <button class="btn" onclick="closeEdit()">Cancel</button>
+      <button class="btn primary" onclick="savePortfolio()">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Stocks Modal -->
+<div class="overlay" id="stocks-overlay">
+  <div class="modal modal-wide" role="dialog" aria-labelledby="stocks-title">
+    <h2 id="stocks-title">Direct stock holdings</h2>
+    <div class="modal-sub">GBp = UK pence: price in pence, e.g. AZN 13554 GBp = £135.54 a share.</div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:5px;font-weight:600;text-transform:uppercase;letter-spacing:.05em">FX rates (1 unit → GBP)</div>
+    <div class="fx-bar" id="fx-bar"></div>
+    <div style="overflow-x:auto">
+      <table class="stk-table">
+        <thead><tr>
+          <th>Ticker</th><th>Name</th><th>Qty</th><th>Price</th><th>CCY</th><th style="text-align:right">MV (£)</th><th></th>
+        </tr></thead>
+        <tbody id="stocks-rows"></tbody>
+      </table>
+    </div>
+    <button class="add-row-btn" onclick="addStockRow()">+ Add stock</button>
+    <button class="add-row-btn" id="ibkr-sync-btn" style="display:none" onclick="syncFromIbkr()">⬇ Sync from IBKR</button>
+    <div id="ibkr-note" style="font-size:11px;color:var(--sub);margin-top:6px"></div>
+    <div class="modal-footer">
+      <button class="btn" onclick="closeEditStocks()">Cancel</button>
+      <button class="btn primary" onclick="saveStocks()">Save</button>
+    </div>
+  </div>
+</div>
+
+<script src="/reference.js?v={{ v }}"></script>
+<script src="/static/app.js?v={{ v }}"></script>
+</body>
+</html>
