@@ -20,6 +20,7 @@ import json
 import os
 import time
 from pathlib import Path
+from urllib.parse import parse_qsl, urlencode
 
 from flask import Flask, Response, abort, jsonify, render_template, request
 
@@ -41,6 +42,24 @@ CRON_BUDGET = float(os.environ.get("CRON_BUDGET_SECONDS", "270"))
 app = Flask(__name__)
 
 
+def restore_rewritten_path(wsgi_app):
+    """vercel.json rewrites every request to /api/index?__path=<original path>.
+    Vercel may hand the request to this app directly or through api/index.py,
+    with the path still rewritten either way; put the original back so routing
+    works. Requests without __path (local runs) pass through untouched."""
+    def wrapped(environ, start_response):
+        query = parse_qsl(environ.get("QUERY_STRING", ""), keep_blank_values=True)
+        path = next((v for k, v in query if k == "__path"), None)
+        if path is not None:
+            environ["PATH_INFO"] = "/" + path.lstrip("/")
+            environ["QUERY_STRING"] = urlencode([(k, v) for k, v in query if k != "__path"])
+        return wsgi_app(environ, start_response)
+    return wrapped
+
+
+app.wsgi_app = restore_rewritten_path(app.wsgi_app)
+
+
 def store():
     s = get_store()
     if pf.is_empty(s):            # first run: start from the demo portfolio
@@ -58,12 +77,8 @@ def read_only_demo():
 def not_found(_):
     """JSON 404 naming the path the app saw and the commit serving it, so a
     routing problem on the host can be diagnosed from outside."""
-    env = request.environ
     return jsonify({"ok": False, "error": "Not found", "path": request.path,
-                    "build": os.environ.get("VERCEL_GIT_COMMIT_SHA", "local")[:7],
-                    # TEMPORARY routing diagnostics
-                    "script_name": env.get("SCRIPT_NAME"), "raw_uri": env.get("RAW_URI") or env.get("REQUEST_URI"),
-                    "query": env.get("QUERY_STRING")}), 404
+                    "build": os.environ.get("VERCEL_GIT_COMMIT_SHA", "local")[:7]}), 404
 
 
 # ─── Page and reference data ─────────────────────────────────────────────────
