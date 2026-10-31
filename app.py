@@ -54,6 +54,18 @@ def read_only_demo():
         return jsonify({"ok": False, "error": "This is a read-only demo."}), 403
 
 
+@app.errorhandler(404)
+def not_found(_):
+    """JSON 404 naming the path the app saw and the commit serving it, so a
+    routing problem on the host can be diagnosed from outside."""
+    env = request.environ
+    return jsonify({"ok": False, "error": "Not found", "path": request.path,
+                    "build": os.environ.get("VERCEL_GIT_COMMIT_SHA", "local")[:7],
+                    # TEMPORARY routing diagnostics
+                    "script_name": env.get("SCRIPT_NAME"), "raw_uri": env.get("RAW_URI") or env.get("REQUEST_URI"),
+                    "query": env.get("QUERY_STRING")}), 404
+
+
 # ─── Page and reference data ─────────────────────────────────────────────────
 
 def ibkr_enabled() -> bool:
