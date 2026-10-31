@@ -6,6 +6,16 @@
       "includeFiles": "{templates,static,data}/**"
     }
   },
-  "rewrites": [{ "source": "/(.*)", "destination": "/api/index" }],
-  "crons": [{ "path": "/api/cron/refresh", "schedule": "0 6 * * 1-5" }]
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api/index?__path=$1"
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/cron/refresh",
+      "schedule": "0 6 * * 1-5"
+    }
+  ]
 }

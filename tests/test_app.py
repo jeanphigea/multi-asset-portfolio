@@ -65,3 +65,18 @@ def test_research_scores_round_trip(client):
 
 def test_demo_blocks_score_writes(client):
     assert client(DEMO_MODE="1").post("/api/ai-maturity", json={"key": "x", "score5": 3}).status_code == 403
+
+
+def test_vercel_entry_restores_rewritten_path(client):
+    client()                                      # fresh store + env
+    import importlib
+
+    from werkzeug.test import Client
+    import api.index
+    entry = Client(importlib.reload(api.index).app)
+    assert entry.get("/api/index?__path=").status_code == 200                      # the page
+    r = entry.get("/api/index?__path=api/summary")
+    assert r.status_code == 200 and r.get_json()[-1]["ticker"] == "DIRECT"
+    r = entry.get("/api/index?years=7&__path=api/risk")                           # other params survive
+    assert r.status_code == 400 and "lookback" in r.get_json()["error"]
+    assert entry.get("/api/index?__path=static/app.css").status_code == 200
